@@ -9,11 +9,11 @@ app.use(express.json());
 
 // Configurações do banco de dados para o novo banco (Railway)
 const dbConfig = {
-  host: 'mysql.railway.internal',  // Host do banco
+  host: 'mysql-jww1.railway.internal',  // Host do banco
   user: 'root',  // Usuário do banco
   password: 'XfZUPIHFkatAoUdOXgWWwFPLHkSnACjl',  // Senha do banco
   database: 'railway',  // Nome do banco de dados
-  port: 53494,  // Porta do banco
+  port: 3306,  // Porta do banco
 };
 
 // Criação da conexão com o banco de dados
@@ -128,5 +128,4 @@ app.delete('/produtos/:id', async (req, res) => {
 
 // Inicia o servidor
 app.listen(port, () => {
-  console.log(`Microsserviço de Estoque rodando em http://localhost:${port}`);
 });
