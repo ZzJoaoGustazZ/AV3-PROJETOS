@@ -73,7 +73,7 @@ app.post('/produtos', async (req, res) => {
 
   try {
     const result = await executeQuery(
-      'INSERT INTO Produtos (nome, descricao, quantidade, preco) VALUES (?, ?, ?, ?)',
+      'INSERT INTO produtos (nome, descricao, quantidade, preco) VALUES (?, ?, ?, ?)',
       [nome, descricao, quantidade, preco]
     );
 
