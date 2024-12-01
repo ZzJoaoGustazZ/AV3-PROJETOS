@@ -2,18 +2,18 @@ const express = require('express');
 const mysql = require('mysql2');
 
 const app = express();
-const port = 53494;
+const port = 53494;  // Porta padrão usada pelo Railway para MySQL
 
 // Middleware para analisar o corpo da requisição como JSON
 app.use(express.json());
 
 // Configurações do banco de dados para o novo banco (Railway)
 const dbConfig = {
-  host: 'junction.proxy.rlwy.net',
-  user: 'root',
-  password: 'XfZUPIHFkatAoUdOXgWWwFPLHkSnACjl',
-  database: 'railway',
-  port: 53494, // Porta do banco
+  host: 'mysql.railway.internal',  // Host do banco
+  user: 'root',  // Usuário do banco
+  password: 'XfZUPIHFkatAoUdOXgWWwFPLHkSnACjl',  // Senha do banco
+  database: 'railway',  // Nome do banco de dados
+  port: 53494,  // Porta do banco
 };
 
 // Criação da conexão com o banco de dados
@@ -28,8 +28,7 @@ connection.connect((err) => {
   console.log('Conectado ao banco de dados MySQL!');
 });
 
-// **Endpoints do Microsserviço de Estoque**
-
+// Endpoints do Microsserviço de Estoque
 function executeQuery(query, params = []) { // TEMPLATE METHOD
   return new Promise((resolve, reject) => {
     connection.query(query, params, (err, results) => {
@@ -46,7 +45,7 @@ function executeQuery(query, params = []) { // TEMPLATE METHOD
 // 1. Listar todos os produtos (GET /produtos)
 app.get('/produtos', async (req, res) => {
   try {
-    const produtos = await executeQuery('SELECT * FROM Produtos');
+    const produtos = await executeQuery('SELECT * FROM produtos');
     res.json(produtos);
   } catch (error) {
     res.status(500).send(error);
