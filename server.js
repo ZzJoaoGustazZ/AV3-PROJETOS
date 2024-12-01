@@ -56,7 +56,7 @@ app.get('/produtos', async (req, res) => {
 app.get('/produtos/:id', async (req, res) => {
   const { id } = req.params;
   try {
-    const produto = await executeQuery('SELECT * FROM Produtos WHERE id = ?', [id]);
+    const produto = await executeQuery('SELECT * FROM produtos WHERE id = ?', [id]);
     if (produto.length === 0) {
       res.status(404).send('Produto não encontrado');
       return;
@@ -93,7 +93,7 @@ app.put('/produtos/:id', async (req, res) => {
 
   try {
     const result = await executeQuery(
-      'UPDATE Produtos SET nome = ?, descricao = ?, quantidade = ?, preco = ? WHERE id = ?',
+      'UPDATE produtos SET nome = ?, descricao = ?, quantidade = ?, preco = ? WHERE id = ?',
       [nome, descricao, quantidade, preco, id]
     );
 
@@ -113,7 +113,7 @@ app.delete('/produtos/:id', async (req, res) => {
   const { id } = req.params;
 
   try {
-    const result = await executeQuery('DELETE FROM Produtos WHERE id = ?', [id]);
+    const result = await executeQuery('DELETE FROM produtos WHERE id = ?', [id]);
 
     if (result.affectedRows === 0) {
       res.status(404).send('Produto não encontrado');
