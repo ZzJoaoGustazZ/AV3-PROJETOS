@@ -4,7 +4,6 @@ const mysql = require('mysql2');
 const app = express();
 const port = 53494;  // Porta padrão usada pelo Railway para MySQL
 
-// Middleware para analisar o corpo da requisição como JSON
 app.use(express.json());
 
 // Configurações do banco de dados para o novo banco (Railway)
@@ -16,10 +15,8 @@ const dbConfig = {
   port: 3306,  // Porta do banco
 };
 
-// Criação da conexão com o banco de dados
 const connection = mysql.createConnection(dbConfig); // SINGLETON PATTERN
 
-// Testa a conexão ao iniciar o servidor
 connection.connect((err) => {
   if (err) {
     console.error('Erro ao conectar ao banco de dados:', err);
