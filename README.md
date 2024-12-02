@@ -30,3 +30,11 @@ CREATE TABLE produtos (
 4) ver se tem node no pc
 
 
+
+5) aplicar banco de dados
+
+HOSTNAME: junction.proxy.rlwy.net
+PORT: 53494
+USERNAME: root
+PASSWORD: XfZUPIHFkatAoUdOXgWWwFPLHkSnACjl
+
